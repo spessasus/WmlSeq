@@ -1,0 +1,96 @@
+#sequencer_controls
+{
+    width: 80%;
+    position: relative;
+    margin: auto auto 2px;
+
+    --progress-bar-height: 1.4em;
+}
+
+#sequencer_controls #note_progress
+{
+    border-radius: var(--progress-bar-height);
+    background-color: #406;
+    height: var(--progress-bar-height);
+    padding: 5px;
+    transition: all 100ms linear;
+    position: absolute;
+}
+
+#sequencer_controls #note_time
+{
+    position: relative;
+    z-index: 5;
+    font-size: var(--progress-bar-height);
+    text-align: center;
+    color: #ccc;
+    margin: auto;
+    width: 100%;
+}
+
+#sequencer_controls #note_time:hover{
+    cursor: pointer;
+}
+
+#sequencer_controls .control_buttons
+{
+    position: relative;
+    display: inline-block;
+    transition: all 0.1s ease;
+}
+
+#sequencer_controls .control_buttons:hover{
+    cursor: pointer;
+    filter: brightness(1.5);
+}
+
+#sequencer_controls #note_progress_background
+{
+    border-radius: var(--progress-bar-height);
+    background-color: #343434;
+    height: var(--progress-bar-height);
+    position: absolute;
+    padding: 5px;
+    width: 100%;
+}
+
+#sequencer_controls .lyrics{
+    position: fixed;
+    top:0;
+    right: 0;
+    width: min-content;
+    min-width: 30%;
+    height: 50%;
+    z-index: 256;
+    display: block;
+    opacity: 0;
+    backdrop-filter: blur(2px) brightness(0.5);
+    background-color: rgba(3, 3, 3, 0.3);
+    transition: opacity 100ms ease-in-out;
+    scroll-behavior: smooth;
+    overflow-y: auto;
+    visibility: hidden;
+    border-radius: 10px;
+}
+
+.lyrics_title{
+    position: sticky;
+    top: 2px;
+    background-color: rgba(3, 3, 3);
+    border-radius: 10px;
+}
+
+.lyrics_selector{
+    position: sticky;
+    top: 2em;
+    background-color: rgba(3, 3, 3);
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    padding: 5px;
+}
+
+.lyrics_show{
+    opacity: 1 !important;
+    visibility: visible !important;
+}
