@@ -1,10 +1,5 @@
-@font-face {
-    font-family: "Sans";
-    src: url("../OpenSans-Light.ttf");
-}
-
 * {
-    font-family: "Sans", serif;
+    font-family: "Open Sans Light", serif;
     color: #ccc;
     text-align: center;
     margin: 0;
@@ -74,7 +69,7 @@ input[type="file"] {
     transition: width ease 0.5s;
 }
 
-label
+label.button
 {
     padding: 6px;
     border-radius: 5px;
@@ -97,6 +92,8 @@ iframe
 select, option{
     background-color: #000;
     color: #ccc;
-    border: none;
+    border: solid #ccc 1px;
+    border-radius: 5px;
+    margin-left: 5px ;
     font-size: large;
 }

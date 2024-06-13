@@ -5,18 +5,23 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>WmlSeq</title>
+    <title>Web MIDI Link Sequencer and player</title>
     <link rel="stylesheet" href='website/css/style.css'>
     <link rel="stylesheet" href='website/css/sequencer_ui.css'>
 </head>
 <body class="bod">
     <div class="main">
         <h1>WmlSeq: WebMidiLink Sequencer</h1>
-        <label style="width: max-content;">Upload a MIDI FIle
-            <input type="file" id="mid_in" accept="*mid">
-        </label>
-        <select id="synth_select">
-        </select>
+        <div style="margin: 0.5em">
+            <label class="button" style="width: max-content;">Upload a MIDI FIle
+                <input type="file" id="mid_in" accept="*mid">
+            </label>
+            <label  class="button">
+                <a style="color: yellowgreen" href='https://github.com/spessasus/WmlSeq' target='_blank' id='github_page'>Project's page</a>
+            </label>
+        </div>
+        <label for="synth_select">Select synthesizer: <select id="synth_select">
+        </select></label>
         <iframe id="synth" src="https://spessasus.github.io/SpessaSynth" width="1000" height="562"></iframe>
         <h1 id="title" style="font-style: italic"></h1>
         <div id="sequencer_controls"></div>
@@ -26,7 +31,9 @@
         {
             synthlist.forEach(s => {
                 document.getElementById("synth_select").innerHTML += `<option value="${s.url}">${s.author}: ${s.name}</option>`
-            })
+            });
+            console.log(synthlist)
+            document.getElementById("synth_select").value = "https://spessasus.github.io/SpessaSynth";
         }
     </script>
     <script type="module" src="main.js"></script>

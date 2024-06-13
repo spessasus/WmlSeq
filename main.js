@@ -13,13 +13,19 @@ midIn.onchange = async () => {
     {
         return;
     }
-    midIn.parentElement.style.display = "none";
     const mid = new ShiftableByteArray(await midIn.files[0].arrayBuffer());
     const parsed = new MIDI(mid);
     document.getElementById("title").innerText = parsed.midiName;
     const synth = document.getElementById("synth")
-    const seq = new Sequencer(parsed, synth.contentWindow);
-    const seqUi = new SequencerUI();
-    seqUi.connectSequencer(seq);
-    seq.play();
+    if(!window.seq) {
+        window.seq = new Sequencer(parsed, synth.contentWindow);
+        const seqUi = new SequencerUI();
+        seqUi.connectSequencer(window.seq);
+        window.seq.play();
+    }
+    else
+    {
+        window.seq.startNewSequence(parsed);
+        window.seq.play(true);
+    }
 }

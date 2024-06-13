@@ -12,13 +12,22 @@ export class Sequencer {
     constructor(parsedMidi, synth)
     {
         this.ignoreEvents = false;
-        this.midiData = parsedMidi;
         this.synth = synth;
 
-        if (!this.midiData.tracks) {
+        if (!parsedMidi.tracks) {
             throw "No tracks supplied!";
         }
 
+        this.startNewSequence(parsedMidi);
+    }
+
+    /**
+     * @param midiData {MIDI}
+     */
+    startNewSequence(midiData)
+    {
+        this.stop();
+        this.midiData = midiData;
         // event's number in this.events
         this.eventIndex = 0;
 
